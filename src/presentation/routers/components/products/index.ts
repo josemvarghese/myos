@@ -1,7 +1,9 @@
 import { Router } from "express";
-import { productsPing } from "./products.controller";
+import { listAllProducts, newProduct } from "./products.controller";
 const productRouter: Router = Router();
 
-productRouter.get('/', productsPing);
+productRouter.post('/', newProduct);
+productRouter.get('/', listAllProducts);
+
 
 export default productRouter;

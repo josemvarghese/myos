@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { orderPing } from "./order.controller";
+import { placeOrder } from "./order.controller";
 const orderRouter: Router = Router();
 
-orderRouter.get('/', orderPing);
+orderRouter.post('/', placeOrder);
 
 export default orderRouter;
