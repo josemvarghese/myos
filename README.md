@@ -1,4 +1,4 @@
-# Mayos - Jose Maliakal Varghese 
+# Myos - Jose Maliakal Varghese 
 
 
 
