@@ -2,9 +2,7 @@ import mongoose from 'mongoose';
 import * as dotenv from "dotenv";
 dotenv.config();
 let database: mongoose.Connection;
-console.log(process.env.MONGO_DB_URL);
-const dbHostUri: string = process.env.MONGO_DB_URL as string;
-
+const dbHostUri: string = process.env.DB_URL;
 export const connect = () => {
     const conectionOptions: any = {
         useUnifiedTopology: true,

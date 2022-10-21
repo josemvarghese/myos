@@ -6,11 +6,12 @@ export class ProductDataSource implements IProduct {
 
     async createProduct(product: NewProductDto): Promise<IResponse> {
         try {
-            let data = await ProductModel.insertMany(product);
-            let resData: IResponse = { status: true, message: "New product Added successfully", data };
+            const productInfo = new ProductModel(product) 
+            const data = await productInfo.save();
+            const resData: IResponse = { status: true, message: "New product Added successfully", data };
             return resData;
         } catch (error: any) {
-            let data: IResponse = { status: false, message: error.message };
+            const data: IResponse = { status: false, message: error.message };
             return data;
         }
     }
@@ -45,10 +46,10 @@ export class ProductDataSource implements IProduct {
                     quantity: 1
                 }
             ).sort(sort).skip(productList.limit * productList.page).limit(productList.limit);
-            let resData: IResponse = { status: true, message: "product list", data };
+            const resData: IResponse = { status: true, message: "product list", data };
             return resData;
         } catch (error: any) {
-            let data: IResponse = { status: false, message: error.message };
+            const data: IResponse = { status: false, message: error.message };
             return data;
         }
     }
