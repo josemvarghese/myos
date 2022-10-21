@@ -1,0 +1,296 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Online Shop APIs",
+    "description": "Online Shop APIs",
+    "version": "1.0.11"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:4000/v1"
+    }
+  ],
+  "tags": [
+    {
+      "name": "product",
+      "description": "Products in the online shop"
+    },
+    {
+      "name": "order",
+      "description": "Order details of customers"
+    }
+  ],
+  "paths": {
+    "/product": {
+      "post": {
+        "tags": [
+          "product"
+        ],
+        "summary": "Add a new product to the store",
+        "description": "Add a new product to the store",
+        "operationId": "addProduct",
+        "requestBody": {
+          "description": "Create a new product in the store",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "product"
+        ],
+        "summary": "List products",
+        "description": "list all the products with search by title & description and sort by price",
+        "operationId": "findProducts",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search by title & description and sort by price",
+            "required": false,
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "price",
+            "in": "query",
+            "description": "sort price by high to low",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "desc",
+              "enum": [
+                "desc",
+                "asc"
+              ]
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "number of items to be diplayed in a list",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductListResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/order": {
+      "post": {
+        "tags": [
+          "order"
+        ],
+        "summary": "Place an order",
+        "description": "Place a new order in the store",
+        "operationId": "placeOrder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Order": {
+        "type": "object",
+        "properties": {
+          "quantity": {
+            "type": "integer",
+            "example": 10
+          },
+          "productId": {
+            "type": "string",
+            "example": "6351964e36650bc4547a4249"
+          },
+          "orderBy": {
+            "type": "string",
+            "example": "Jose"
+          }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Laptop"
+          },
+          "description": {
+            "type": "string",
+            "example": "Laptop Description"
+          },
+          "pictureUrl": {
+            "type": "string",
+            "example": "https://m.media-amazon.com/images/I/61YSNhAb00L._AC_SX679_.jpg"
+          },
+          "price": {
+            "type": "integer",
+            "example": 2000
+          },
+          "quantity": {
+            "type": "integer",
+            "example": 10
+          }
+        }
+      },
+      "ProductListResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductResponseData"
+            }
+          }
+        }
+      },
+      "ProductResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "items": {
+              "$ref": "#/components/schemas/ProductResponseData"
+            }
+          }
+        }
+      },
+      "ProductResponseData": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "635196f836650bc4547a424d"
+          },
+          "title": {
+            "type": "string",
+            "example": "Laptop"
+          },
+          "description": {
+            "type": "string",
+            "example": "Laptop Description"
+          },
+          "pictureUrl": {
+            "type": "string",
+            "example": "https://m.media-amazon.com/images/I/61YSNhAb00L._AC_SX679_.jpg"
+          },
+          "price": {
+            "type": "integer",
+            "example": 100
+          },
+          "quantity": {
+            "type": "integer",
+            "example": 10
+          }
+        }
+      },
+      "OrderResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "productId": {
+                "type": "string"
+              },
+              "quantity": {
+                "type": "integer"
+              },
+              "orderBy": {
+                "type": "string"
+              },
+              "orderConfirmed": {
+                "type": "boolean"
+              },
+              "_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

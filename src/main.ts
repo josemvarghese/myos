@@ -2,11 +2,13 @@ import server from './server';
 import * as dotenv from "dotenv";
 import { routes } from './presentation/routers';
 import { connect } from './config/mongo';
-
+import * as swaggerUi from "swagger-ui-express";
+const swaggerDocument = require('./../swagger.json');
 dotenv.config();
 server.get('/v1/health', (req, res) => {
     res.status(200).json({ message: `Server is up and running :) ` })
 });
+server.use('/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 routes(server, `/v1`);
 (async () => {
     try {
