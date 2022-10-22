@@ -1,6 +1,6 @@
 import { OrderDto } from '../../../../dto/order.dto';
 import { Request, Response } from 'express';
-import { OrderDataSource } from '../../../../data/data-sources/mongo/order';
+import { OrderDataSource } from '../../../../data/data-sources/postgres/order';
 import { OrderRepository } from '../../../../domain/repositories/order.repository';
 import { Order } from '../../../../domain/services/order/new-order.service';
 

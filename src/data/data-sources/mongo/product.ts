@@ -15,16 +15,6 @@ export class ProductDataSource implements IProduct {
             return data;
         }
     }
-    async updateProductQuantity(): Promise<IResponse> {
-        try {
-            await ProductModel.findOne();
-            let data: IResponse = { status: true, message: "Updated Profile Successfully", data: {} };
-            return data;
-        } catch (error: any) {
-            let data: IResponse = { status: false, message: error.message };
-            return data;
-        }
-    }
     async listProducts(productList: ListProductDto): Promise<IResponse> {
         let search: any = { status: true };
         if (productList.search) {

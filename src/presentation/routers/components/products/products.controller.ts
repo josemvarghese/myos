@@ -1,6 +1,6 @@
 import { ProductRepository } from '../../../../domain/repositories/product.repository';
 import { Request, Response } from 'express';
-import { ProductDataSource } from '../../../../data/data-sources/mongo/product';
+import { ProductDataSource } from '../../../../data/data-sources/postgres/product';
 import { NewProduct } from '../../../../domain/services/product/new-product-service';
 import { ProductList } from '../../../../domain/services/product/product-list.service';
 import { ListProductDto, NewProductDto, Sort } from '../../../../dto/product.dto';

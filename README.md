@@ -12,7 +12,7 @@ Build an online shop API with the following features:
 - NodeJs
 - Typescript
 - ExpressJs
-- MongoDB
+- Postgres
 - Docker 
 
 ## To Run 

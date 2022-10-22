@@ -4,5 +4,5 @@ import { IResponse } from "../../dto/common.dto";
 export interface IProduct {
     createProduct(product: NewProductDto): Promise<IResponse>;
     listProducts(productList: ListProductDto): Promise<IResponse>;
-    updateProductQuantity(): Promise<IResponse>;
+    // updateProductQuantity(): Promise<IResponse>;
 }
