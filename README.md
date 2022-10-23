@@ -15,13 +15,13 @@ Build an online shop API with the following features:
 - Postgres
 - Docker 
 
-## To Run 
+<!-- ## To Run  -->
 
-```sh
+<!-- ```sh
 cd myos
 docker-compose build
 docker-compose up
-```
+``` -->
 
 
 ## API Docs
