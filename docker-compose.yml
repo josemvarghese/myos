@@ -8,6 +8,17 @@ services:
       - "27017:27017"
     volumes:
       - db:/data/db
+  dbpostgres:
+    image: postgres:14
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - "5433:5433"
   myos:
     depends_on:
       - dbmongo
