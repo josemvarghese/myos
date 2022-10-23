@@ -28,3 +28,12 @@ docker-compose up
 
 API documentation
 <http://0.0.0.0:4000/v1/api-docs/>
+
+## Extra 
+
+Postgres  SQL  integration 
+
+```sh
+cd myos
+git checkout postgres
+```
