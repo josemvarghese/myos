@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-const server = express();
-server.use(express.json());
-server.use(cors({ origin: "*" }))
-export default server
+const app = express();
+app.use(express.json());
+app.use(cors({ origin: "*" }))
+export default app

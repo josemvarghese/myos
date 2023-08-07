@@ -4,11 +4,11 @@ dotenv.config();
 let database: mongoose.Connection;
 const dbHostUri: string = process.env.DB_URL;
 export const connect = () => {
-    const conectionOptions: any = {
+    const connectionOptions: any = {
         useUnifiedTopology: true,
         useNewUrlParser: true
     }
-    mongoose.connect(dbHostUri, conectionOptions);
+    mongoose.connect(dbHostUri, connectionOptions);
     database = mongoose.connection;
     database.once(`open`, async () => {
         console.log(`Connected `);

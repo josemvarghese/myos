@@ -5,11 +5,11 @@ import { IOrderRepository } from '../interface/repositories/order-repository';
 import { OrderDto } from '../../dto/order.dto';
 
 export class OrderRepository implements IOrderRepository {
-    orderDatasource: IOrder;
-    constructor(orderDatasource: IOrder) {
-        this.orderDatasource = orderDatasource;
+    orderDataSource: IOrder;
+    constructor(orderDataSource: IOrder) {
+        this.orderDataSource = orderDataSource;
     }
     async placeNewOrder(orderInfo: OrderDto): Promise<IResponse> {
-        return this.orderDatasource.placeOrder(orderInfo)
+        return this.orderDataSource.placeOrder(orderInfo)
     }
 }

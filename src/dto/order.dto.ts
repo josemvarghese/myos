@@ -1,5 +1,5 @@
-export interface OrderDto{
-productId: string,
-quantity: number;
-orderBy: string
+export interface OrderDto {
+    productId: string;
+    quantity: number;
+    orderBy: string;
 }
