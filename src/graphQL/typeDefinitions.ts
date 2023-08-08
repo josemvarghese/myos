@@ -8,6 +8,7 @@ type Post{
   type Query {
     hello: String
     getAllPosts:[Post]
+    getPost(id:ID):Post
   }
 
 
@@ -17,6 +18,7 @@ type Post{
   }
 type Mutation {
   createPost(post:PostInput):Post
+  removePost(id:ID):String
 }
 
 
