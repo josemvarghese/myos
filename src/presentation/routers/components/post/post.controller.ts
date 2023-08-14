@@ -24,11 +24,14 @@ export const createNewPost = async (parent: any, args: any, context: any, info: 
 }
 export const postInfo = async (parent: any, args: any, context: any, info: any) => {
     const { id } = args
+    console.log("🚀 ~ file: post.controller.ts:27 ~ postInfo ~ id:", id)
     const postDataSource: PostDataSource = new PostDataSource();
     const postRepository: PostRepository = new PostRepository(postDataSource);
     const postInformation: PostInformation = new PostInformation(postRepository);
     const res: IResponse = await postInformation.execute(id);
+    console.log("🚀 ~ file: post.controller.ts:33 ~ postInfo ~ res.data:", res.data)
     return res.data;
+    
 }
 
 export const deletePost = async (parent: any, args: any, context: any, info: any) => {

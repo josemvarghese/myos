@@ -3,4 +3,5 @@ import { IResponse } from "../../dto/common.dto";
 
 export interface IOrder {
     placeOrder(orderInfo: OrderDto): Promise<IResponse>;
+    productOrder(orderId: string): Promise<IResponse>;
 }

@@ -12,4 +12,7 @@ export class OrderRepository implements IOrderRepository {
     async placeNewOrder(orderInfo: OrderDto): Promise<IResponse> {
         return this.orderDataSource.placeOrder(orderInfo)
     }
+    async productOrder(orderId: string): Promise<IResponse> {
+        return this.orderDataSource.productOrder(orderId);
+    }
 }

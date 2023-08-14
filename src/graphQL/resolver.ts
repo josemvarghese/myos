@@ -1,3 +1,4 @@
+import { productOrder } from "../presentation/routers/components/order/order.controller";
 import { createNewPost, listAllPost, postInfo, deletePost } from "../presentation/routers/components/post/post.controller";
 const resolvers = {
   Query: {
@@ -7,6 +8,9 @@ const resolvers = {
     },
     getPost: async (parent: any, args: any, context: any, info: any) => {
       return await postInfo(parent, args, context, info);
+    },
+    getOrder: async (parent: any, args: any, context: any, info: any) => {
+      return await productOrder(parent, args, context, info);
     }
   },
   Mutation: {

@@ -2,7 +2,9 @@ import { OrderDto } from '../../../../dto/order.dto';
 import { Request, Response } from 'express';
 import { OrderDataSource } from '../../../../data/data-sources/mongo/order';
 import { OrderRepository } from '../../../../domain/repositories/order.repository';
+import { OrderInfo } from '../../../../domain/services/order/order-info.service';
 import { Order } from '../../../../domain/services/order/new-order.service';
+import { IResponse } from '../../../../dto/common.dto';
 
 /*
 ? For placing order , customer name, product id, quantity
@@ -18,4 +20,13 @@ export const placeOrder = async (req: Request, res: Response) => {
     const data: any = await order.execute(orderInfo);
     res.statusCode = 200;
     return res.send(data);
+}
+
+export const productOrder = async (parent: any, args: any, context: any, info: any) => {
+    const { id } = args
+    const orderData: OrderDataSource = new OrderDataSource();
+    const orderRepository: OrderRepository = new OrderRepository(orderData);
+    const orderInfo: OrderInfo = new OrderInfo(orderRepository);
+    const res: IResponse = await orderInfo.execute(id);
+    return res.data[0];
 }
