@@ -18,7 +18,6 @@ export class OrderDataSource implements IOrder {
     }
 
     async productOrder(orderId: string): Promise<IResponse> {
-        console.log("🚀 ~ file: order.ts:21 ~ OrderDataSource ~ productOrder ~ orderId:", orderId)
         try {
             const data = await OrderModel.aggregate([{
                 $match: {

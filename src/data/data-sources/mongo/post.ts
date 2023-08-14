@@ -20,13 +20,10 @@ export class PostDataSource implements IPost {
         try {
             console.log("Reached here");
             const data: IPost[] = await PostModel.find();
-            console.log("🚀 ~ file: post.ts:24 ~ PostDataSource ~ getAllPosts ~ data:", data)
-
             const resData: IResponse = { status: true, message: "List of posts", data };
             return resData;
         } catch (error: any) {
             const data: IResponse = { status: false, message: error.message };
-            console.log("🚀 ~ file: post.ts:30 ~ PostDataSource ~ getAllPosts ~ error.message:", error.message)
             return data;
             
         }
