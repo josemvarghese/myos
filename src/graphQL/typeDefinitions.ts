@@ -7,7 +7,7 @@ const typeDefs = gql`
     description: String
   }
 
-  type Order {
+  interface Order {
     id: ID!
     productId: String!
     quantity: Int!
@@ -24,7 +24,7 @@ const typeDefs = gql`
     totalQuantity: Int!
     status: Boolean!
   }
-  type OrderInfo {
+  type OrderInfo implements Order {
     id: ID!
     productId: String!
     quantity: Int!
