@@ -33,7 +33,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
-    "express": "^4.19.2",
+    "express": "^4.21.1",
     "mongoose": "^6.12.0",
     "swagger-ui-express": "^4.5.0"
   }
